@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>HTML 5 Boilerplate</title>
+
+  </head>
+
+  <body>
+
+<button class = "button" id = "button">Restart</button>
+
+    <div id = "container"></div>
+
+
+
+    <style>
+#container {
+    display: flex;
+    flex-wrap: wrap;
+    width: 1000px;
+    height: 1000px;
+}    
+.button {
+  font-size: 50px;
+  margin-bottom: 50px;
+}
+
+
+
+.divClass {
+  display: flex;
+    height: calc(100%/16);
+    width: calc(100%/16);
+    background-color: blue;
+    border: 0px;
+    margin: 0px;
+    
+
+}
+
+    </style>
+    <script>
+
+
+
+
+
+let userInput;
+let containerdiv = document.getElementsByClassName ("container")
+let divElement = document.getElementsByClassName ("divClass");
+let container = document.getElementById("container")
+let button = document.getElementById('button')
+
+
+
+
+for (let i = 0; i < 256; i++) {
+  let createDiv = document.createElement("div");
+  createDiv.className = "divClass";
+  let content = document.createTextNode("");
+  createDiv.appendChild(content);
+  container.appendChild(createDiv);
+
+divElement[i].addEventListener("mouseover", function() {
+this.style.backgroundColor = "red"})
+}
+
+button.addEventListener('click', function() {
+userInput = prompt('How many rows/columns of pixels do you want?');
+changeNew()
+})
+
+function changeNew() {
+
+  let numberInput = Number(userInput)
+  
+
+  if (isNaN(numberInput)) {
+    alert("Make sure you inputed a number!")
+    return;
+  }
+
+  if (numberInput >= 100) {
+  alert("Try a number smaller than 100!")
+  return;
+
+
+  }
+
+  container.innerHTML = '';
+
+
+  for (let i = 0; i < numberInput*numberInput; i++) {
+    let createDiv = document.createElement("div");
+    createDiv.className = "divClass";
+    let content = document.createTextNode("");
+    createDiv.appendChild(content);
+    container.appendChild(createDiv);
+
+  divElement[i].addEventListener("mouseover", function() {
+    this.style.backgroundColor = "red"})
+  }
+
+  for (let i = 0; i < divElement.length; i++) {
+    divElement[i].style.height = `calc(100%/${userInput})`;
+    divElement[i].style.width = `calc(100%/${userInput})`;
+  }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+  </body>
+</html>
+
